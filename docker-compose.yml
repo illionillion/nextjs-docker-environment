@@ -11,3 +11,15 @@ services:
     tty: true
     ports:
       - 3000:3000
+      - 6006:6006
+  json-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: json-backend
+    volumes:
+      - ./json-backend:/app
+    command: sh -c "npm ci && npm start"
+    tty: true
+    ports:
+      - 8000:8000
